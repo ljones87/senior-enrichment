@@ -1,0 +1,23 @@
+body {
+    padding: 60px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+div {
+    display: inline-block
+}
+
+.campuses {
+    text-align: center;
+    font-size: 18px;
+}
+img {
+    height: 200px;
+    width: 200px;
+    border-radius: 15px;
+    box-shadow: 5px 5px black
+}
