@@ -3,7 +3,7 @@
 const router =  require('express').Router();
 
 const { Student } = require('../../db/models');
-const { resolve } = require('path');
+const { Campus } = require('../../db/models');
 
 
 router.get('/', (req, res, next) => {
@@ -13,15 +13,31 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/new-student', (req, res, next) => {
-  Student.findOrCreate( {
+ const campus = Campus.findOne({
     where: {
-      name: req.body.name,
-      email: req.body.email
+      name: req.body.campus
     }
   })
+  .then(campus =>
+    Student.findOrCreate({
+      where: {
+        name: req.body.name,
+        email: req.body.email,
+        campusId: campus.id
+      }
+    })
+  )
     .then(student => res.status(201).json(student))
     .catch(next);
 });
 
+
+router.delete('/:studentId', function (req, res, next) {
+  const id = req.params.channelId;
+
+  Student.destroy({ where: { id } })
+    .then(() => res.status(204).end())
+    .catch(next);
+});
 
 module.exports = router;

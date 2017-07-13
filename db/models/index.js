@@ -5,12 +5,12 @@ const Campus = require('./campus');
 const Student = require('./student');
 
 
-Campus.hasMany(Student, { onDelete: 'CASCADE' });
-Student.belongsTo(Campus);
+Campus.hasMany(Student, { onDelete: 'CASCADE', foreignKey: { allowNull: false} });
+Student.belongsTo(Campus, { through: 'campusId', foreignKey: { allowNull: false} });
 
 module.exports = {
 	db,
 	Student,
 	Campus
-}
+};
 

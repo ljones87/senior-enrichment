@@ -1,6 +1,6 @@
 body {
     padding: 60px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -14,10 +14,39 @@ div {
 .campuses {
     text-align: center;
     font-size: 18px;
+    padding: '20px';
 }
+
+.row {
+    display: block;
+}
+
+.control-label {
+    margin-right: 10px;
+}
+
 img {
     height: 200px;
     width: 200px;
     border-radius: 15px;
-    box-shadow: 5px 5px black
+    box-shadow: 5px 5px black;
+
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.col-sm-3 {
+  width: 50%;
 }

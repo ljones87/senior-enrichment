@@ -2,8 +2,9 @@ import React from 'react';
 import axios from 'axios';
 //import images from '../../../public/images';
 import store from '../store/index';
+
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter, NavLink } from 'react-router-dom';
 
 function allCampuses(props) {
   const campuses = props.campuses;
@@ -14,11 +15,12 @@ function allCampuses(props) {
            <div>{
              campuses.map(campus => {
               return (
-                 <div  href="#">
-                  <div className="campuses" style={{marginTop: '30px', marginLeft: '30px'}} key={campus.id} >{campus.name}
+                  <NavLink key={campus.id} to={`/campus/${campus.id}`}>
+                  <div style={{marginTop: '20px', marginLeft: '50px'}} className="campuses">{campus.name}
                     <img className="media-object" src={campus.image} alt="image" />
                   </div>
-                </div>)
+                  </NavLink>
+                )
              })
             }</div>
         </div>
