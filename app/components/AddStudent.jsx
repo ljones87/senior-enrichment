@@ -5,15 +5,14 @@ import { withRouter } from 'react-router';
 import { addNewStudent } from '../store/students';
 
 
-class addStudent extends React.Component {
+function addStudent (props) {
 
-  render() {
-  const campuses = this.props.campuses;
+  const campuses = props.campuses;
 
   return (
     <div >
       <h3>Student Information</h3>
-      <form className="form-horizontal" onSubmit={this.props.handleSubmit}>
+      <form className="form-horizontal" onSubmit={props.handleSubmit}>
 
         <div className="row">
           <label className="col-sm-2 control-label">Student Name</label>
@@ -61,7 +60,6 @@ class addStudent extends React.Component {
       </form>
     </div>
   );
-}
 }
 
 const mapStateToProps = (state) => {

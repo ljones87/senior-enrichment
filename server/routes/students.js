@@ -32,8 +32,8 @@ router.post('/new-student', (req, res, next) => {
 });
 
 
-router.delete('/:studentId', function (req, res, next) {
-  const id = req.params.channelId;
+router.delete('/', function (req, res, next) {
+  const id = req.body.studentId;
 
   Student.destroy({ where: { id } })
     .then(() => res.status(204).end())

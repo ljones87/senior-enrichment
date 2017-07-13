@@ -25,6 +25,14 @@ div {
     margin-right: 10px;
 }
 
+.delete {
+    font-size: 10px;
+    margin-left: 10px
+}
+.delete:hover {
+    color: red
+}
+
 img {
     height: 200px;
     width: 200px;

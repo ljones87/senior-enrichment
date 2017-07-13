@@ -13,8 +13,13 @@ function allStudents (props) {
           <ul>
           { students.map(student => {
              return (
-                <li key={student.id}>{student.name}</li>
-             )
+               <span key={student.id}>
+                <li  >{student.name}
+                  <span className="delete" onClick={props.handleClick}>delete</span>
+                </li>
+
+                </span>
+             );
           })}
           </ul>
         </div>
@@ -24,11 +29,32 @@ function allStudents (props) {
     )
   }
 
+  /*
+
+   <td>
+                <SortableItem key={`item-${index}`} index={index} value={value} />
+                    </td>
+                    <td>
+                    <button>Remove{index}</button>
+                </td>
+             </tr>
+  */
+
 const mapStateToProps = function(state) {
   return {
     students: state.students,
   };
 }
 
-const StudentListContainer = connect(mapStateToProps)(allStudents)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleClick(event) {
+      const name = event
+      console.log(event)
+      dispatch(deleteStudent(name))
+    }
+  }
+}
+
+const StudentListContainer = connect(mapStateToProps, mapDispatchToProps)(allStudents)
 export default StudentListContainer;

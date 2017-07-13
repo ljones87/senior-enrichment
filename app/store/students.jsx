@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const GET_STUDENTS = 'GET_STUDENTS';
 const ADD_STUDENT = 'ADD_STUDENT';
+const DELETE_STUDENT = 'DELETE_STUDENT';
 
 export function getStudents (allStudents) {
   const action = { type: GET_STUDENTS, allStudents };
@@ -11,6 +12,11 @@ export function getStudents (allStudents) {
 
 export function addStudent (student) {
   const action = { type: ADD_STUDENT, student };
+  return action;
+}
+
+export function deleteStudent (student) {
+  const action = { type: DELETE_STUDENT, student };
   return action;
 }
 
