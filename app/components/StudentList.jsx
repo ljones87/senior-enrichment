@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Student from  './Student';
-import AddStudent from './AddStudent';
-import { changeCurrentCampus } from '../store';
-import { removeStudent } from '../store/index';
+import { Link } from 'react-router-dom';
+import { removeStudent } from '../store';
 
 function StudentList (props) {
   const { campusId, students, campuses } = props;
   return (
+    <div>
+    <h3>Students</h3>
     <table className='table'>
       <thead>
         <tr>
@@ -28,14 +28,20 @@ function StudentList (props) {
                   onClick={props.handleClick}>X</span>
                 </button>
               </td>
-              <td>{ student.name }</td>
+                <td>{ student.name }</td>
               <td>{ campuses.filter(campus => campus.id === student.campusId
               )[0].name}</td>
+             <Link to={`/edit-student/${student.id}`}>
+               <button className="btn btn-default btn-xs">
+                  <span className="glyphicon">Edit</span>
+                </button>
+             </Link>
             </tr>
           ))
         }
       </tbody>
     </table>
+    </div>
   );
 }
 

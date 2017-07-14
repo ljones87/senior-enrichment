@@ -1,15 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function SingleCampus(props) {
   const campus = props.campus;
-  const students = props.students;
+  const students = props.students.filter(student => student.campusId === campus.id);
 
     return (
       <div className="campus">
         <div>
           <h3>{campus.name}</h3>
-          <img src={campus.image} className="img-thumbnail" />
+          <Link to={`/edit-campus/${campus.id}`}>
+          <img src={campus.image}     className="img-thumbnail" />
+          </Link>
         </div>
         <table className='table'>
           <thead>
@@ -44,7 +47,7 @@ const mapStateToProps = function (state, ownProps) {
   const campusId = Number(ownProps.match.params.campusId);
   return {
     campus: state.campuses.find(campus => campus.id === campusId),
-    students: state.students,
+    students: state.students
   };
 };
 

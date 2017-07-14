@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const GET_CAMPUSES = 'GET_CAMPUSES';
 const ADD_CAMPUS = 'ADD_CAMPUS';
+const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
 const DELETE_CAMPUS = 'DELETE_CAMPUS';
 
 /* ------------   ACTION CREATORS     ------------------ */
@@ -16,6 +17,11 @@ export function getCampuses (allCampuses) {
 
 export function addCampus (campus) {
   const action = { type: ADD_CAMPUS, campus };
+  return action;
+}
+
+export function updateCampus(campus) {
+  const action = { type: UPDATE_CAMPUS, campus };
   return action;
 }
 
@@ -42,9 +48,22 @@ export function fetchCampuses () {
 export function addNewCampus (credentials) {
 
   return function thunk (dispatch) {
-     return axios.post('/api/', credentials)
+     return axios.post('/api/new-campus', credentials)
       .then(newCampus => {
         const action = addCampus(newCampus);
+        dispatch(action);
+       // socket.emit('new-student', newStudent);
+      })
+      .catch(err => console.log(err))
+  }
+}
+
+export function updateCampusName (info) {
+
+  return function thunk (dispatch) {
+     return axios.put(`/api/edit-campus/${info.id}`, {name: info.name, id: info.id})
+      .then(newCampusName => {
+        const action = updateCampus(newCampusName);
         dispatch(action);
        // socket.emit('new-student', newStudent);
       })
@@ -72,6 +91,8 @@ export default function campuses (state = [], action) {
       return action.allCampuses;
     case ADD_CAMPUS:
       return [...state, action.addCampus];
+    case UPDATE_CAMPUS:
+      return [...state, action.updateCampus];
     case DELETE_CAMPUS:
       return state.filter(({id}) => id !== action.deleteCampus);
     default:

@@ -1,13 +1,18 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import AllCampus from './AllCampus';
-import Navbar from './Navbar';
-import SingleCampus from './SingleCampus';
-import CampusList from './CampusList';
-import StudentList from './StudentList';
 import AddCampus from './AddCampus';
-import Sidebar from './Sidebar'
+import AddStudent from './AddStudent';
+import CampusList from './CampusList';
+import EditCampus from './EditCampus';
+import EditStudent from './EditStudent';
+import HomePage from './HomePage';
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
+import SingleCampus from './SingleCampus';
+import StudentList from './StudentList';
+
+
 
 import store, { fetchStudents, fetchCampuses } from '../store';
 
@@ -29,10 +34,14 @@ export default class Main extends React.Component {
           </div>
            <div className="col-xs-10">
           <Switch>
-            <Route path="/new-campus" component={AddCampus} />
             <Route path="/campuses" component={CampusList} />
             <Route path="/campus/:campusId" component={SingleCampus} />
+            <Route path="/edit-campus/:campusId" component={EditCampus} />
+            <Route path="/new-campus" component={AddCampus} />
             <Route path="/students" component={StudentList} />
+            <Route path="/new-student" component={AddStudent} />
+            <Route path="/edit-student/:studentId"  component={EditStudent} />
+            <Route path="/" component={HomePage} />
             <Redirect to="/" />
           </Switch>
          </div>

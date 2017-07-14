@@ -1,11 +1,10 @@
 import React from 'react';
-import { fetchCampuses } from '../store/campuses';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { addNewCampus } from '../store/index';
 
 
-function addCampus (props) {
+function AddCampus (props) {
 
   const campuses = props.campuses;
 
@@ -54,7 +53,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const NewCampusContainer = connect(mapStateToProps, mapDispatchToProps)(addCampus);
+const NewCampusContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(AddCampus));
 export default NewCampusContainer;
 
 

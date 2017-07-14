@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const GET_STUDENTS = 'GET_STUDENTS';
 const ADD_STUDENT = 'ADD_STUDENT';
+const UPDATE_STUDENT = 'UPDATE_STUDENT';
 const DELETE_STUDENT = 'DELETE_STUDENT';
 
 /* ------------   ACTION CREATORS     ------------------ */
@@ -16,6 +17,11 @@ export function getStudents (allStudents) {
 
 export function addStudent (student) {
   const action = { type: ADD_STUDENT, student };
+  return action;
+}
+
+export function updateStudent (student) {
+  const action = { type: UPDATE_STUDENT, student };
   return action;
 }
 
@@ -51,6 +57,19 @@ export function addNewStudent (credentials) {
   }
 }
 
+export function updateStudentInfo (info) {
+
+  return function thunk (dispatch) {
+     return axios.put(`/api/students/edit-student/${info.id}`,
+     {id: info.id, name: info.name, email: info.email, campus: info.campus })
+      .then(newStudentInfo => {
+        const action = updateStudent(newStudentInfo);
+        dispatch(action);
+       // socket.emit('new-student', newStudent);
+      })
+      .catch(err => console.log(err))
+  }
+}
 export function removeStudent (studentId) {
 
   return function thunk (dispatch) {
@@ -72,27 +91,11 @@ export default function students (state = [], action) {
       return action.allStudents;
     case ADD_STUDENT:
       return [...state, action.addStudent];
+    case UPDATE_STUDENT:
+      return [...state, action.updateStudent];
     case DELETE_STUDENT:
       return state.filter(({id}) => id !== action.deleteStudent);
     default:
       return state;
   }
 }
-
-
-
-// export function addStudent (student, history) {
-
-//   return function thunk (dispatch) {
-//     return axios.post('/api/students/new-student', channel)
-//       .then(res => res.data)
-//       .then(newStudent => {
-//         const action = getStudents(newStudent);
-//         dispatch(action);
-//         socket.emit('new-student', newStudent);
-//       });
-//   }
-
-// }
-
-

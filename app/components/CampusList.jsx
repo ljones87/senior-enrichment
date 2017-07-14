@@ -27,7 +27,7 @@ function CampusList (props) {
                 </Link>
                 <small className="caption"
                   className="deleteCampus"
-                    id={campus.id}
+                  id={campus.id}
                   onClick={props.handleClick}>Delete Campus
                   </small>
               </div>

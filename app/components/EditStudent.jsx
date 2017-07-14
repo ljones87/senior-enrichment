@@ -2,17 +2,17 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { addNewStudent } from '../store';
+import { updateStudentInfo } from '../store';
 
+function EditStudent (props) {
 
-function AddStudent (props) {
-
+  const student = props.student;
   const campuses = props.campuses;
 
   return (
     <div >
-      <h4>New Student Information</h4>
-      <form className="form-horizontal" onSubmit={props.handleSubmit}>
+      <h4>Update {student.name}'s Information </h4>
+      <form className="form-horizontal" onSubmit={props.handleNameSubmit}>
 
         <div className="row">
           <label className="col-sm-2 control-label">Full Name</label>
@@ -62,32 +62,34 @@ function AddStudent (props) {
   );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = function (state, ownProps) {
+  const studentId = Number(ownProps.match.params.studentId);
   return {
-    student: state.students,
-    campuses: state.campuses,
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleSubmit (event) {
-      event.preventDefault();
-      const name = event.target.name.value;
-      const email = event.target.email.value;
-      const campus = event.target.campus.value;
-
-      const credentials = {name, email, campus};
-      dispatch(addNewStudent(credentials));
-
-    }
+    student: state.students.find(student => student.id === studentId),
+    campuses: state.campuses
   };
 };
 
-const NewStudentContainer = connect(mapStateToProps, mapDispatchToProps)(AddStudent);
-export default NewStudentContainer;
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const studentId = Number(ownProps.match.params.studentId);
+  return {
+    handleNameSubmit (event) {
+      event.preventDefault();
+      const id = studentId;
+      const name = event.target.name.value;
+      const email = event.target.email.value;
+      const campus = event.target.campus.value;
+      const info = {id, name, email, campus};
+      dispatch(updateStudentInfo(info));
+    }
+
+  };
+};
+
+const EditedStudentContainer = connect(mapStateToProps, mapDispatchToProps)(EditStudent);
+export default EditedStudentContainer;
 
 
 
-// const CampusListContainer = connect(mapStateToProps)(allCampuses)
-// export default CampusListContainer;
+// const studentListContainer = connect(mapStateToProps)(allstudentes)
+// export default studentListContainer;
