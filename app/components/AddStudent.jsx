@@ -11,11 +11,11 @@ function addStudent (props) {
 
   return (
     <div >
-      <h3>Student Information</h3>
+      <h4>New Student Information</h4>
       <form className="form-horizontal" onSubmit={props.handleSubmit}>
 
         <div className="row">
-          <label className="col-sm-2 control-label">Student Name</label>
+          <label className="col-sm-2 control-label">Name</label>
           <div className="col-sm-3">
             <input
               name="name"
@@ -27,7 +27,7 @@ function addStudent (props) {
         </div>
 
         <div className="row">
-          <label className="col-sm-2 control-label">Student Email</label>
+          <label className="col-sm-2 control-label">Email</label>
           <div className="col-sm-3">
             <input
               name="email"
@@ -40,7 +40,7 @@ function addStudent (props) {
 
         <div className="row">
           <label className="col-sm-2 control-label">Campus</label>
-          <div className= "col-sm-3">
+          <div className= "col-sm-4">
             <select
               name="campus"
               className="form-control"

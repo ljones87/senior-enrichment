@@ -14,10 +14,8 @@ router.get('/', (req, res, next) => {
 
 //find single campus
 router.get('/campus/:campusId', (req, res, next) => {
-  Campus.findOne({
-    where: {
-      id : req.params.campusId
-    }
+  const id = req.params.campusId
+  Campus.findOne({ where: {id}
   })
     .then(campus => res.json(campus))
     .catch(next);
@@ -28,27 +26,33 @@ router.post('/', (req, res, next) => {
   Campus.findOrCreate({
     where: {
       name: req.body.name,
-      img: '/images/OtherCampus.jpg'
+      image: req.body.img
     }
   })
   .then(campus => res.status(201).json(campus))
   .catch(next);
 });
-
-//delete campus
-router.delete('/campus/:campusId', function (req, res, next) {
-  const id = req.params.channelId;
-
-  Campus.destroy({ where: { id } })
-    .then(() => res.status(204).end())
+//update campus
+router.put('/campus/:campusId', (req, res, next) => {
+  const {name} = req.body
+  Campus.update(
+    {name},
+    {where: {id: req.params.campusId},
+    returning: true
+    })
+    .spread(count, campuses => res.status(200).json(campuses))
     .catch(next);
 });
 
-// router.post('/campuses', (req, res, next) => {
-//   Campus.findOrCreate(req.body)
-//     .then(campus => res.status(201).json(campus))
-//     .catch(next);
-// });
+//delete campus
+router.delete('/campus/:campusId', function (req, res, next) {
+  const id = req.params.campusId;
+  Campus.destroy({ where: { id } })
+    .then(() => res.status(204).send("campus removed removed"))
+    .catch(next);
+});
+
+
 
 // router.put('/:campusId', (req, res, next) => {
 //   req.campus.update(req.body)

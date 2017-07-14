@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Navbar = (props) => {
+export default function Navbar () {
 
   return (
     <div className="navbar navbar-fixed-top navbar-inverse" role="navigation">
@@ -13,17 +13,17 @@ const Navbar = (props) => {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="/">Interplanetary Campuses</a>
+          <a className="navbar-brand" href="/">Interplanetary Campuses Home</a>
         </div>
         <div id="nav-items" className="collapse navbar-collapse">
           <ul className="nav navbar-nav">
             <li><a href="/students/">students</a></li>
-            <li><a href="/new-student/">new student</a></li>
+            <li><a href="/new-student/"></a></li>
           </ul>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default Navbar;
+

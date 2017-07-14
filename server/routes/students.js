@@ -5,13 +5,15 @@ const router =  require('express').Router();
 const { Student } = require('../../db/models');
 const { Campus } = require('../../db/models');
 
-
-router.get('/', (req, res, next) => {
-  Student.findAll()
+//get all or one student
+router.get('/:studentId', (req, res, next) => {
+  const id = req.body.id
+  Student.findAll({ where: {id} })
     .then(students => res.json(students))
     .catch(next);
 });
 
+//post student
 router.post('/new-student', (req, res, next) => {
  const campus = Campus.findOne({
     where: {
@@ -31,12 +33,11 @@ router.post('/new-student', (req, res, next) => {
     .catch(next);
 });
 
-
-router.delete('/', function (req, res, next) {
-  const id = req.body.studentId;
-
+//delete student
+router.delete('/:studentId', function (req, res, next) {
+  const id = req.params.studentId;
   Student.destroy({ where: { id } })
-    .then(() => res.status(204).end())
+    .then(() => res.status(204).send("student removed"))
     .catch(next);
 });
 
