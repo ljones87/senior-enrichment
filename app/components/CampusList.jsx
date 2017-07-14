@@ -10,32 +10,32 @@ function CampusList (props) {
   const { campuses } = props;
 
   return (
-    <ul className="campusList">
-      {
-        campuses.map(campus => {
-          return (
-            <li key={campus.id}>
-              <div
-                style={{ marginTop: '20px', marginLeft: '50px' }}
-                className="campuses"
-                >{campus.name}</div>
-                <Link  to={`/campus/${campus.id}`}>
-                    <img className="media-object" src={campus.image} alt="image" />
-                  </Link>
-                 <span
-                    className="deleteCampus"
+    <div>
+      <h3>CAMPUSES</h3>
+      <div className="row">
+        {
+          campuses.map(campus => {
+            return (
+              <div className="col-xs-4" key={campus.id}>
+                <div className="caption">
+                  <h5>
+                    <span>{campus.name}</span>
+                  </h5>
+                </div>
+                <Link to={`/campus/${campus.id}`}>
+                  <img className="thumbnail" src={campus.image} />
+                </Link>
+                <small className="caption"
+                  className="deleteCampus"
                     id={campus.id}
-                    onClick={props.handleClick}>Delete Campus
-                  </span>
-            </li>
-          );
-        })
+                  onClick={props.handleClick}>Delete Campus
+                  </small>
+              </div>
+            );
+          })
       }
-
-      <li>
-        <NavLink to="/new-campus">Create a campus...</NavLink>
-      </li>
-    </ul>
+    </div>
+    </div>
   );
 }
 

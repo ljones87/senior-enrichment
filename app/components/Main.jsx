@@ -23,17 +23,20 @@ export default class Main extends React.Component {
 
   render() {
     return (
-      <div>
-      <Sidebar />
-      <Navbar />
-        <main>
+        <div id="main" className="container-fluid">
+          <Navbar />
+          <div className="col-xs-2">
+            <Sidebar />
+          </div>
+           <div className="col-xs-10">
           <Switch>
             <Route path="/new-campus" component={AddCampus} />
+            <Route path="/campuses" component={CampusList} />
             <Route path="/campus/:campusId" component={StudentList} />
             <Route path="/students" component={StudentList} />
             <Redirect to="/" />
           </Switch>
-        </main>
+         </div>
       </div>
     );
   }
