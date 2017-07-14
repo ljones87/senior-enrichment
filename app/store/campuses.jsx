@@ -49,12 +49,13 @@ export function addNewCampus (credentials) {
 
   return function thunk (dispatch) {
      return axios.post('/api/new-campus', credentials)
-      .then(newCampus => {
-        const action = addCampus(newCampus);
+      .then(res => res.data)
+      .then(campus => {
+        const action = addCampus(campus[0]);
         dispatch(action);
        // socket.emit('new-student', newStudent);
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   }
 }
 
@@ -62,10 +63,10 @@ export function updateCampusName (info) {
 
   return function thunk (dispatch) {
      return axios.put(`/api/edit-campus/${info.id}`, {name: info.name, id: info.id})
+      .then(res => res.data)
       .then(newCampusName => {
         const action = updateCampus(newCampusName);
         dispatch(action);
-       // socket.emit('new-student', newStudent);
       })
       .catch(err => console.log(err))
   }
@@ -74,11 +75,11 @@ export function updateCampusName (info) {
 export function removeCampus (campusId) {
 
   return function thunk (dispatch) {
-     return axios.delete(`/api/campus/${campusId}`)
-      .then(campusId => {
-        const action = deleteCampus(campusId);
+     return axios.delete(`/api/campus/${campusId}`, {campusId})
+      .then(res => res.data)
+      .then(campus => {
+        const action = deleteCampus(campus);
         dispatch(action);
-       // socket.emit('removed-campus', newStudent);
       })
       .catch(err => console.log(err))
   }

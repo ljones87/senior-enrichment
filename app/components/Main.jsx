@@ -48,7 +48,5 @@ export default class Main extends React.Component {
       </div>
     );
   }
-
 }
 
-//Route exact path="/single-campus" component={CampusList} />

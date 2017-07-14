@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { addNewCampus } from '../store/index';
+import { addNewCampus } from '../store';
 
 
 function AddCampus (props) {

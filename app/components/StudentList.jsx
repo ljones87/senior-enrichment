@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { removeStudent } from '../store';
 
 function StudentList (props) {
@@ -61,5 +61,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const StudentListContainer = connect(mapStateToProps, mapDispatchToProps)(StudentList)
+const StudentListContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(StudentList));
 export default StudentListContainer;

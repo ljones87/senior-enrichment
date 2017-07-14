@@ -21,7 +21,7 @@ function CampusList(props) {
                     <span>{campus.name}</span>
                   </h5>
                 </div>
-                <Link to={`/campus/${campus.id}`}>
+                 <Link to={`/campus/${campus.id}`}>
                   <img className="thumbnail" src={campus.image} />
                 </Link>
                 <small
@@ -65,3 +65,8 @@ const CampusListContainer = withRouter(connect(mapStateToProps, mapDispatchToPro
 //
 // It's equivalent to saying:
 //// ...elsewhere, in a `render`:
+
+/*
+
+
+*/
