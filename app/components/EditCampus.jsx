@@ -2,12 +2,10 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-
 import { updateCampusName } from '../store';
 
 function EditCampus (props) {
 
-  const campus = props.campus;
   return (
     <div >
       <h4>Edit campus</h4>
@@ -55,5 +53,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-const EditedCampusContainer = connect(mapStateToProps, mapDispatchToProps)(EditCampus);
+const EditedCampusContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(EditCampus));
 export default EditedCampusContainer;

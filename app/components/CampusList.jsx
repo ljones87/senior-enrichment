@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { withRouter, NavLink, Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { removeCampus } from '../store/index';
-import AddCampus from './AddCampus';
 
-function CampusList (props) {
+function CampusList(props) {
 
   const { campuses } = props;
 
@@ -25,16 +24,16 @@ function CampusList (props) {
                 <Link to={`/campus/${campus.id}`}>
                   <img className="thumbnail" src={campus.image} />
                 </Link>
-                <small className="caption"
-                  className="deleteCampus"
+                <small
+                  className="caption"
                   id={campus.id}
                   onClick={props.handleClick}>Delete Campus
                   </small>
               </div>
             );
           })
-      }
-    </div>
+        }
+      </div>
     </div>
   );
 }
@@ -55,8 +54,8 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CampusList));
+const CampusListContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(CampusList));
+ export default CampusListContainer;
 //
 // We need to wrap the component in `withRouter` so that the NavLinks will be able to update
 // Because `connect` implements `shouldComponentUpdate`, it will block re-rendering unless it detects

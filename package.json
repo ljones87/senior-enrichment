@@ -8,7 +8,7 @@
     "build": "webpack",
     "build-watch": "webpack -w",
     "start": "nodemon server/start.js",
-    "build-css": "node-sass -w app/style.scss -o public/stylesheets"
+    "seed": "node ./seed.js"
   },
   "keywords": [
     "react",

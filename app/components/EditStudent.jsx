@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { updateStudentInfo } from '../store';
 
-function EditStudent (props) {
+function EditStudent(props) {
 
   const student = props.student;
   const campuses = props.campuses;
@@ -40,7 +40,7 @@ function EditStudent (props) {
 
         <div className="row">
           <label className="col-sm-2 control-label">Campus</label>
-          <div className= "col-sm-4">
+          <div className="col-sm-4">
             <select
               name="campus"
               className="form-control"
@@ -85,5 +85,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-const EditedStudentContainer = connect(mapStateToProps, mapDispatchToProps)(EditStudent);
+const EditedStudentContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(EditStudent));
 export default EditedStudentContainer;

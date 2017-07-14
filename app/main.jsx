@@ -3,9 +3,9 @@
 
 import React from 'react';
 import {render} from 'react-dom';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import store, { fetchStudents, fetchCampuses } from './store';
+import store from './store';
 import Main from './components/Main';
 
 
@@ -14,7 +14,7 @@ import Main from './components/Main';
           <Router>
             <Main />
           </Router>
-        </Provider> ,
+        </Provider>,
         document.getElementById('main')
       );
 

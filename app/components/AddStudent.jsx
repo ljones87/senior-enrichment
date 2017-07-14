@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { addNewStudent } from '../store';
@@ -84,10 +83,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const NewStudentContainer = connect(mapStateToProps, mapDispatchToProps)(AddStudent);
+const NewStudentContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(AddStudent));
 export default NewStudentContainer;
 
-
-
-// const CampusListContainer = connect(mapStateToProps)(allCampuses)
-// export default CampusListContainer;

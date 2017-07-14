@@ -45,7 +45,7 @@ const mapDispatchToProps = (dispatch) => {
     handleCampusSubmit (event) {
       event.preventDefault();
       const name = event.target.campus.value;
-      const image = '/images/RoundyCampus.jpg';
+      const image = '/images/OtherCampus.jpg';
       const info = {name, image};
       dispatch(addNewCampus(info));
     }
@@ -53,7 +53,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const NewCampusContainer = connect(mapStateToProps, mapDispatchToProps)(AddCampus);
+const NewCampusContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(AddCampus));
 export default NewCampusContainer;
-
-

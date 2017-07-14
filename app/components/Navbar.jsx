@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default function Navbar () {
+export default function Navbar() {
 
   return (
     <div className="navbar navbar-fixed-top navbar-inverse" role="navigation">
@@ -11,9 +11,6 @@ export default function Navbar () {
             <span className="sr-only">Toggle navigation</span>
           </button>
           <a className="navbar-brand" href="/">Interplanetary Campuses Home</a>
-        </div>
-        <div id="nav-items" className="collapse navbar-collapse">
-
         </div>
       </div>
     </div>
