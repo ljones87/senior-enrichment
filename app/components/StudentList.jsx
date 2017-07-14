@@ -22,7 +22,10 @@ function StudentList (props) {
             <tr key={student.id}>
               <td>
                 <button className="btn btn-default btn-xs">
-                  <span className="glyphicon glyphicon-trash"></span>
+                  <span
+                  className="glyphicon"
+                  id={student.id}
+                  onClick={props.handleClick}>X</span>
                 </button>
               </td>
               <td>{ student.name }</td>

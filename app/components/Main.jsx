@@ -3,7 +3,6 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import AllCampus from './AllCampus';
 import Navbar from './Navbar';
-import AllStudents from './AllStudents';
 import SingleCampus from './SingleCampus';
 import CampusList from './CampusList';
 import StudentList from './StudentList';
