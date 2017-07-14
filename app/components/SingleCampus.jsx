@@ -2,9 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 function SingleCampus(props) {
-  const campus = props.campus
+  const campus = props.campus;
   const students = props.students;
-   console.log(campus)
 
     return (
       <div className="campus">
@@ -43,7 +42,6 @@ function SingleCampus(props) {
 
 const mapStateToProps = function (state, ownProps) {
   const campusId = Number(ownProps.match.params.campusId);
-  console.log("****", campusId)
   return {
     campus: state.campuses.find(campus => campus.id === campusId),
     students: state.students,

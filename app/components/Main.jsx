@@ -32,7 +32,7 @@ export default class Main extends React.Component {
           <Switch>
             <Route path="/new-campus" component={AddCampus} />
             <Route path="/campuses" component={CampusList} />
-            <Route path="/campus/:campusId" component={StudentList} />
+            <Route path="/campus/:campusId" component={SingleCampus} />
             <Route path="/students" component={StudentList} />
             <Redirect to="/" />
           </Switch>

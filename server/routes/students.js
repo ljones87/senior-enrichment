@@ -7,8 +7,7 @@ const { Campus } = require('../../db/models');
 
 //get all or one student
 router.get('/', (req, res, next) => {
-  const id = req.body.id
-  Student.findAll({ where: {id} })
+  Student.findAll()
     .then(students => res.json(students))
     .catch(next);
 });
