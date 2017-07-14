@@ -53,7 +53,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const NewCampusContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(AddCampus));
+const NewCampusContainer = connect(mapStateToProps, mapDispatchToProps)(AddCampus);
 export default NewCampusContainer;
 
 

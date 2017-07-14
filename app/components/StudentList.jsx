@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { removeStudent } from '../store';
 
 function StudentList (props) {
-  const { campusId, students, campuses } = props;
+  const { students, campuses } = props;
   return (
     <div>
     <h3>Students</h3>

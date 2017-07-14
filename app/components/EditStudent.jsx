@@ -82,14 +82,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       const info = {id, name, email, campus};
       dispatch(updateStudentInfo(info));
     }
-
   };
 };
 
 const EditedStudentContainer = connect(mapStateToProps, mapDispatchToProps)(EditStudent);
 export default EditedStudentContainer;
-
-
-
-// const studentListContainer = connect(mapStateToProps)(allstudentes)
-// export default studentListContainer;

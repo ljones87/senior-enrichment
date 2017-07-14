@@ -20,9 +20,3 @@ export default function Navbar () {
   );
 }
 
-
-
-          // <ul className="nav navbar-nav">
-          //   <li><a href="/students/">students</a></li>
-          //   <li><a href="/new-student/"></a></li>
-          // </ul>
