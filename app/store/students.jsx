@@ -48,6 +48,7 @@ export function addNewStudent (credentials) {
 
   return function thunk (dispatch) {
      return axios.post('/api/students/new-student', credentials)
+      .then(res => res.data)
       .then(newStudent => {
         const action = addStudent(newStudent);
         dispatch(action);
@@ -62,6 +63,7 @@ export function updateStudentInfo (info) {
   return function thunk (dispatch) {
      return axios.put(`/api/students/edit-student/${info.id}`,
      {id: info.id, name: info.name, email: info.email, campus: info.campus })
+      .then(res => res.data)
       .then(newStudentInfo => {
         const action = updateStudent(newStudentInfo);
         dispatch(action);
@@ -74,6 +76,7 @@ export function removeStudent (studentId) {
 
   return function thunk (dispatch) {
      return axios.delete(`/api/students/${studentId}`)
+      .then(res => res.data)
       .then(student => {
         const action = deleteStudent(student);
         dispatch(action);

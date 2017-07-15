@@ -62,7 +62,7 @@ export function addNewCampus (credentials) {
 export function updateCampusName (info) {
 
   return function thunk (dispatch) {
-     return axios.put(`/api/edit-campus/${info.id}`, {name: info.name, id: info.id})
+     return axios.put(`/api/edit-campus/${info.id}`, info)
       .then(res => res.data)
       .then(newCampusName => {
         const action = updateCampus(newCampusName);
@@ -77,8 +77,8 @@ export function removeCampus (campusId) {
   return function thunk (dispatch) {
      return axios.delete(`/api/campus/${campusId}`, {campusId})
       .then(res => res.data)
-      .then(campus => {
-        const action = deleteCampus(campus);
+      .then(campusId => {
+        const action = deleteCampus(campusId);
         dispatch(action);
       })
       .catch(err => console.log(err))
